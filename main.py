@@ -32,75 +32,71 @@ print(intro_text)
 # Liste der bekannten Eigenschaften (Name, Öffnungszeiten, )
 
 # Hier werden die Texte definiert
-strassenbahn_haltestelle_BS_bahnhof_text="Du befindest Dich an der Straßenbahn-Haltestelle Braunschweig Hauptbahnhof." \
-                                         "Die Straßenbahngleise verlaufen von Südwesten nach Nordosten, parallel zu den Bahngleisen." \
-                                         "Rund um die Haltestelle verläuft eine einspurige Einbahnstraße wie ein zu einem Oval langgezogener Kreisel für den Busverkehr." \
-                                         "Am nordöstlichen Ende der Haltestelle befindet sich ein Leitstreifen, der zum Haupteingang des Hauptbahnhofs Braunschweig führt Richtung Südosten." \
-                                         "Südlich befindet sich der Taxistand, der parallel zur Straßenbahnhaltestelle eine weitere langgezogene Straßenschleife für die Taxis bildet."
+strassenbahn_haltestelle_BS_bahnhof_text="Du befindest Dich an der Straßenbahn-Haltestelle Braunschweig Hauptbahnhof.\n" \
+                                         "Die Straßenbahngleise verlaufen von Südwesten nach Nordosten, parallel zu den Bahngleisen.\n" \
+                                         "Rund um die Haltestelle verläuft eine einspurige Einbahnstraße wie ein zu einem Oval langgezogener Kreisel für den Busverkehr.\n" \
+                                         "Am nordöstlichen Ende der Haltestelle befindet sich ein Leitstreifen, der zum Haupteingang des Hauptbahnhofs Braunschweig führt Richtung Südosten.\n" \
+                                         "Südlich befindet sich der Taxistand, der parallel zur Straßenbahnhaltestelle eine weitere langgezogene Straßenschleife für die Taxis bildet.\n"
 
-vor_bahnhof_BS_text="Du befindest Dich vor dem Haupteingang des Braunschweiger Hauptbahnhofs." \
-                    "Südwestlich befindet sich ein Stand der Bäckerei Ditsch." \
-                    "Östlich ist der Haupteingang des Hauptbahnhofs Braunschweig." \
-                    "Nach Südwesten verläuft ein Fußweg zum Taxistand."
+vor_bahnhof_BS_text="Du befindest Dich vor dem Haupteingang des Braunschweiger Hauptbahnhofs.\n" \
+                    "Südwestlich befindet sich ein Stand der Bäckerei Ditsch.\n" \
+                    "Östlich ist der Haupteingang des Hauptbahnhofs Braunschweig.\n" \
+                    "Nach Südwesten verläuft ein Fußweg zum Taxistand.\n"
 
-taxistand_bahnhof_BS_text="Du befindest Dich am Taxistand vor dem Braunschweiger Hauptbahnhof." \
-                     "Ein Fußweg führt nach Nordosten am Bahnhofsgebäude entlang zum Haupteingang des Bahnhofs." \
-                     "Nach Südosten führt der Fußweg zur DHL Packstation." \
-                     "Nordwestlich von Dir befindet sich die Straßenbahn-Haltestelle Braunschweig Hauptbahnhof."
+taxistand_bahnhof_BS_text="Du befindest Dich am Taxistand vor dem Braunschweiger Hauptbahnhof.\n" \
+                     "Ein Fußweg führt nach Nordosten am Bahnhofsgebäude entlang zum Haupteingang des Bahnhofs.\n" \
+                     "Nach Südosten führt der Fußweg zur DHL Packstation.\n" \
+                     "Nordwestlich von Dir befindet sich die Straßenbahn-Haltestelle Braunschweig Hauptbahnhof.\n"
 
-vorhalle_bahnhof_BS_text="Du befindest Dich in der Vorhalle des Braunschweiger Hauptbahnhofs. " \
-                    "Ein Leitstreifen führt nach Osten in den Gang zu den Gleisen." \
-                    "Hier befinden sich:" \
-                    "-	Ein Euronet Bankautomat" \
-                    "-	Ein Reisebank Bankautomat" \
-                    "-	Ein Informationsstand der DB" \
-                    "-	Ein Verkaufsstand der DB" \
-                    "-	Bäckerei Steinicke" \
-                    "-	Drogerie Rossman Express"
+vorhalle_bahnhof_BS_text="Du befindest Dich in der Vorhalle des Braunschweiger Hauptbahnhofs.\n" \
+                    "Ein Leitstreifen führt nach Osten in den Gang zu den Gleisen.\n" \
+                    "Hier befinden sich:\n" \
+                    "-	Ein Euronet Bankautomat\n" \
+                    "-	Ein Reisebank Bankautomat\n" \
+                    "-	Ein Informationsstand der Deutschen Bahn\n" \
+                    "-	Ein Verkaufsstand der Deutschen Bahn\n" \
+                    "-	Bäckerei Steinicke\n" \
+                    "-	Drogerie Rossman Express\n"
 
-gleistunnel_bahnhof_BS_text="Du befindest Dich im Tunnel zu den Gleisen im Hauptbahnhof Braunschweig. " \
-                       "Nach Südosten befinden sich die Treppen und Aufzüge die nach oben zu den Bahnsteigen führen." \
-                       "Am nächsten befindet sich der Aufgang zu Gleis 1 und 2." \
-                       "Weiter im Südosten befinden sich die Aufgänge zu den Gleisen mit den höheren Nummern."
+gleistunnel_bahnhof_BS_text="Du befindest Dich im Tunnel zu den Gleisen im Hauptbahnhof Braunschweig.\n" \
+                       "Nach Südosten befinden sich die Treppen und Aufzüge die nach oben zu den Bahnsteigen führen.\n" \
+                       "Am nächsten befindet sich der Aufgang zu Gleis 1 und 2.\n" \
+                       "Weiter im Südosten befinden sich die Aufgänge zu den Gleisen mit den höheren Nummern.\n"
 
-Strassenbahn_Leitstreifen_text="Du befindest Dich am nordöstlichen Ende der Straßenbahnhaltestelle Braunschweig Hauptbahnhof." \
-                               "Ein taktiler Leitstreifen verläuft nach Osten zum Haupteingang des Bahnhofs."
-
-#---------------------------------------------------------------------------
-
-raum[1]={"id":1, "name":"Straßenbahnhaltestelle", "N":False, "S": False, "O":False,"W":False, "SE": False, "NE":6, "NW":False, "SW": False, "Beschreibung":strassenbahn_haltestelle_BS_bahnhof_text}
-
-raum[2]={"id":2, "name":"Vor dem Bahnhof", "N":False, "S": False, "O":4,"W":False, "SE": False, "NE":False,"NW":False, "SW": 3, "Beschreibung":vor_bahnhof_BS_text}
-
-raum[3]={"id":3, "name":"Taxistand", "N":False, "S": 2, "O":False,"W":False, "SE": False, "NE":2,"NW":False, "SW": False, "Beschreibung":taxistand_bahnhof_BS_text}
-
-raum[4]={"id":4, "name":"Bahnhofsvorhalle", "N":False, "S": False, "O":5,"W":2, "SE": False, "NE":False,"NW":False, "SW": False, "Beschreibung":vorhalle_bahnhof_BS_text}
-
-raum[5]={"id":5, "name":"Tunnel zu den Gleisen", "N":False, "S": False, "O":False,"W":4, "SE": False, "NE":False,"NW":False, "SW": False, "Beschreibung":gleistunnel_bahnhof_BS_text}
-
-raum[6]={"id":6, "name":"Straßenbahn Leitstreifen", "N":False, "S": False, "O":False,"W":False, "SE": False, "NE":False,"NW":False, "SW": 1, "Beschreibung":Strassenbahn_Leitstreifen_text}
+Strassenbahn_Leitstreifen_text="Du befindest Dich am nordöstlichen Ende der Straßenbahnhaltestelle Braunschweig Hauptbahnhof.\n" \
+                               "Ein taktiler Leitstreifen verläuft nach Osten zum Haupteingang des Bahnhofs.\nn"
 
 
-#---------------------------------------------------------------------------
-beginning_text = strassenbahn_haltestelle_BS_bahnhof_text
+raeume= {
+    1: {"id": 1, "name":"Straßenbahnhaltestelle", "N":False, "S": False, "O":False,"W":False, "SO": False, "NO":6, "NW":False, "SW": False, "Beschreibung":strassenbahn_haltestelle_BS_bahnhof_text},
+    2: {"id": 2, "name":"Vor dem Bahnhof", "N":False, "S": False, "O":4,"W":False, "SO": False, "NO":False,"NW":False, "SW": 3, "Beschreibung":vor_bahnhof_BS_text},
+    3: {"id": 3, "name":"Taxistand", "N":False, "S": 2, "O":False,"W":False, "SO": False, "NO":2,"NW":False, "SW": False, "Beschreibung":taxistand_bahnhof_BS_text},
+    4: {"id": 4, "name":"Bahnhofsvorhalle", "N":False, "S": False, "O":5,"W":2, "SO": False, "NO":False,"NW":False, "SW": False, "Beschreibung":vorhalle_bahnhof_BS_text},
+    5: {"id": 5, "name":"Tunnel zu den Gleisen", "N":False, "S": False, "O":False,"W":4, "SO": False, "NO":False,"NW":False, "SW": False, "Beschreibung":gleistunnel_bahnhof_BS_text},
+    6: {"id": 6, "name":"Straßenbahn Leitstreifen", "N":False, "S": False, "O":False,"W":False, "SO": False, "NO":False,"NW":False, "SW": 1, "Beschreibung":Strassenbahn_Leitstreifen_text}
+    }
 
-print(beginning_text)
+current_room = 1
 
+print(raeume[current_room]["Beschreibung"])
+
+print(raeume[current_room]["N"])
+print(raeume[current_room]["S"])
+print(raeume[current_room]["W"])
+print(raeume[current_room]["O"])
+print(raeume[current_room]["NW"])
+print(raeume[current_room]["NO"])
+print(raeume[current_room]["SW"])
+print(raeume[current_room]["SO"])
 next_action = input("> ")
 
-if "walk" in next_action and "walls" in next_action:
-    print("You stumble through a door.")
-    print("You look around.")
-    print("There are some chracked walnut shells lying around in the far corner")
+if "no" in next_action:
+    print("Du hast no eingegeben.")
+    print("Der Wert von no ist")
+    print(raeume[current_room]["NO"])
+    current_room=raeume[current_room]["NO"]
 
-elif "light" in next_action and "turn" in next_action and "on" in next_action:
-    text = """
-    You now see you are in round room 5x5.
-    There are two doors in the room: a north door and a west door.
-    There is also a window.
-    What do you do?
-    """
-    print(text)
+    print(raeume[current_room]["Beschreibung"])
 
     while True:
         next_door = input("> ")
