@@ -64,10 +64,16 @@ gleistunnel_bahnhof_BS_text="Du befindest Dich im Tunnel zu den Gleisen im Haupt
                        "Weiter im Südosten befinden sich die Aufgänge zu den Gleisen mit den höheren Nummern.\n"
 
 Strassenbahn_Leitstreifen_text="Du befindest Dich am nordöstlichen Ende der Straßenbahnhaltestelle Braunschweig Hauptbahnhof.\n" \
-                               "Ein taktiler Leitstreifen verläuft nach Osten zum Haupteingang des Bahnhofs.\nn"
+                               "Ein taktiler Leitstreifen verläuft nach Osten zum Haupteingang des Bahnhofs.\n"
 
 richtungen= ("n","s","w","o","nw","no","sw","so")
 
+kommandos=("inventar", "inventory", "inv",
+           "help", "hilfe", "h",
+           "save", "speichern", "speichere",
+           "quit", "ende", "beenden", "q"
+           "info", "untersuche", "examine", "look", "schau", "sieh",
+           "objekte")
 
 raeume= {
     1: {"id": 1, "name":"Straßenbahnhaltestelle", "n":False, "s": False, "o":False,"w":False, "so": False, "no":6, "nw":False, "sw": False, "Beschreibung":strassenbahn_haltestelle_BS_bahnhof_text},
@@ -78,15 +84,29 @@ raeume= {
     6: {"id": 6, "name":"Straßenbahn Leitstreifen", "n":False, "s": False, "o":2, "w":False, "so": False, "no":False,"nw":False, "sw": 1, "Beschreibung":Strassenbahn_Leitstreifen_text}
     }
 
+objekte= {
+    1: {"name":"fahrkartenautomat", "ort": 4, "beschreibung": "Der rote Fahrkartenautomat ist eingeschaltet. Da ist niemand."},
+    2: {"name": "bäckerei", "ort": 2, "beschreibung": "Die Bäckerei heißt Steinicke. Die Öffnungszeiten sind Montags bis Sonntags von 8:00h bis 19:00h."}
+    }
+
+objektliste = []
+
+for key in objekte:
+    objektliste.append(objekte[key]["name"])
+
+print (objektliste)
+
+# Initialisierung
 current_room = 1  # Beginne an der Straßenbahnhaltestelle
 
-print(raeume[current_room]["Beschreibung"])
+# Hauptprogramm
 
 while True:
+    print(raeume[current_room]["Beschreibung"])
     print("Du kannst in folgende Richtungen gehen:")
     for richtung in richtungen:
         if not(raeume[current_room][richtung]==False):
-            print("\"" + richtung + "\""+" führt Dich zu "+ "\""+ raeume[raeume[current_room][richtung]]["name"]+ "\"")
+            print("-\"" + richtung + "\""+" führt Dich zu "+ "\""+ raeume[raeume[current_room][richtung]]["name"]+ "\"")
             #print(raeume[current_room][richtung])
             #print(raeume[raeume[current_room][richtung]]["name"])
 
@@ -100,44 +120,101 @@ while True:
     print(raeume[current_room]["sw"])
     print(raeume[current_room]["so"])"""
 
-
+    # Benutzereingabe abfragen
     next_action = input("> ")
-
-
+    next_action = next_action.lower()
     # print(raeume[current_room][next_action])
 
-    current_room=raeume[current_room][next_action]
 
-    print(raeume[current_room]["Beschreibung"])
+    if next_action in richtungen:
+        # Gehen
+        if not raeume[current_room][next_action]==False :
+            current_room=raeume[current_room][next_action]
+            print("Du bist ein Stück gegangen. \n")
+        else:
+            print("In diese Richtung führt kein Weg.\n")
+    else:
+        # Aktionen, die nicht Gehen sind
+        print ("Du bist nicht gegangen.")
+        # print("Deine Eingabe war:"+ next_action)
+        print(f"Deine Eingabe war: {next_action}" )
 
-"""
+        if next_action in ("inventar", "inventory", "inv"):
+            print("Du guckst in alle Deine Taschen und findest:")
+            print("- Dein Handy.")
+
+        elif next_action in ("save", "speichern", "speichere"):
+            print("Du möchtest speichern:")
+            print("Eine solche Funktion ist leider noch nicht implementiert.")
+
+        elif next_action in ("hilfe", "help", "h"):
+            print("\nDu möchtest Hilfe:")
+            print("Versuche eine Himmelsrichtung einzugeben, um in diese Richtung zu gehen z.b. N, NO, S, SW\n")
+            print("Ich verstehe folgende Kommandos:")
+            print(kommandos)
+            print("\nDu brauchst keine Großbuchstaben zu benutzen.\n")
+
+        elif next_action in ("objekte"):
+            print("Hier befinden sich folgende Objekte:")
+
+            for key in objekte :
+                number_of_objects=0
+                if objekte[key]["ort"]==current_room :
+                    print("-" + objekte[key]["name"])
+                    number_of_objects= number_of_objects+1
+            if number_of_objects ==0 :
+                print("keine.")
+            print(" ")
+
+        elif next_action in ("info", "untersuche", "examine", "look", "schau", "sieh"):
+            print("Du möchtest etwas untersuchen. Was?")
+            next_object = input(": ")
+            if next_object.lower() in (objektliste):
+                print("Ich habe Dein Objekt \"" + next_object + "\" erkannt.")
+                current_object = None
+
+                for key in objekte:
+                    if objekte[key]["name"] == next_object:
+                        current_location = objekte[key]["ort"]
+                        current_object=key
+                        break
+
+                #print(Das Objekt "+" next_object + " befindet sich am Ort " + current_location)
+                print("Du bist gerade am Ort \""+ raeume[current_room]["name"] + "\".")
+                if not current_location == current_room:
+                    print("Dein Objekt ist nicht hier.")
+                else:
+                    print("Dein Objekt ist hier.")
+                    #print(current_object)
+                    #print(objekte[current_object])
+                    print(objekte[current_object]["beschreibung"])
+
+                print(" ")
+            else:
+                print("Ich habe Dein Objekt nicht erkannt. Ich kenne folgende Objekte:")
+                print (objekte)
+                print(" ")
+
+        elif next_action in ("ende", "quit", "q", "beenden"):
+            print("Du möchtest den Dialog beenden. Vielen Dank für die Benutzung der Look-and-Listen-Map. Tschüss, bis zum nächsten Mal!")
+            break # while Schleife verlassen und damit das Programm beenden
+        else:
+            print("Ich habe Dich nicht verstanden. Versuche \"hilfe\", um eine Liste von Kommandos zu erhalten.")
+
+
+# Ende While-Schleife
+"""elif "quit" in next_door.split(' ') or "q" in next_door.split(' '):
+print("You quit the game.")
+break
+elif "save" in next_door.split(' ') or "s" in next_door.split(' '):
+print("You want to save the game, but this function does not exist yet.")
+elif "help" in next_door.split(' ') or "h" in next_door.split(' '):
+print("You might try the following:")
+print("Help, inventory, save, quit, north, south, east, west, turn light on, go window")
+else:
+print("I've got no idea what that means. Try ""help"" for a list of commands.")
     next_door = input("> ")
-
-    if next_door == "north" or next_door == "n":
-        print("You are now in the north room. There are some cracked walnut shells lying around in the far corner.")
-    elif "west" in next_door or "w" in next_door:
-        print("You've entered the west room.")
-        print("In front of you is a tea party.")
-        print("Alice, the March Hare and the Mad Hatter are passing cups and pastries around.")
-    elif "window" in next_door.split(' '):
-        print("You approach the window and look out.")
-        print("You are looking upon a small, dimly-lit inner courtyard, 1x1.")
-        print("You see clotheslines with the neighbour's laundry hanging on them.")
-        print("Apparently, they haven't gotten a single matching pair of socks.")
-    elif "south" in next_door.split(' '):
-        print("You try to go south.")
-    elif "east" in next_door.split(' ') or "e" in next_door.split(' '):
-        print("You try to go east.")
     elif "inventory" in next_door.split(' ') or "inv" in next_door.split(' '):
         print("You look into your pockets and you see:...")
-    elif "quit" in next_door.split(' ') or "q" in next_door.split(' '):
-        print("You quit the game.")
-        break
-    elif "save" in next_door.split(' ') or "s" in next_door.split(' '):
-        print("You want to save the game, but this function does not exist yet.")
-    elif "help" in next_door.split(' ') or "h" in next_door.split(' '):
-        print("You might try the following:")
-        print("Help, inventory, save, quit, north, south, east, west, turn light on, go window")
-    else:
-        print("I've got no idea what that means. Try ""help"" for a list of commands.")
+    
 """
